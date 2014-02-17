@@ -1,8 +1,7 @@
 
 class Card
-  attr_accessor :suit, :value, :color #:dealt, #:owner #visible
-  #visible is if card is public/private. eg players private until end, dealer always public, remaining deck private, etc
-  
+  attr_accessor :suit, :value, :color
+ 
   def initialize(suit, value)
     @suit = suit
     @value = value
@@ -11,13 +10,6 @@ class Card
     else
       @color = "black"
     end
-   ##@dealt = dealt #boolean
-   ## if @dealt == true
-   ##   puts "dealt cards must have an owner. who owns this card?"
-   ##   @owner = gets.chomp  #double check this: match gets.chomp to Player.name????
-   ## else
-   ##   @owner = nil
-   ## end
   end  
 
 end
@@ -36,8 +28,6 @@ attr_accessor :card_deck
     end
   end
   puts "New deck has been created! Total cards: #{@card_deck.length}"
-  ##shuffle should later be put into a new_hand method
-  
   return @card_deck
   end
         

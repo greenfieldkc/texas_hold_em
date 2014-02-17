@@ -1,9 +1,8 @@
 require './player.rb'
-require './dealer.rb'
 require './cards.rb'
    
 class Game
-  attr_accessor :players, :starting_money, :ante, :jackpot, :dealer, :undealt_deck, :dealt_deck, :cards_in_hand
+  attr_accessor :players, :starting_money, :ante, :jackpot, :undealt_deck, :dealt_deck, :cards_in_hand
   
   def initialize(starting_money=100, starting_ante=1)
       @players = []
@@ -16,7 +15,6 @@ class Game
       @players.each {|player| puts "#{player.name} is seated at the table with $#{player.money}" }
       @ante = starting_ante
       @jackpot = 0
-      @dealer = Dealer.new
       @cards_in_hand = []
       @undealt_deck = DeckOfCards.new.card_deck.shuffle
       @dealt_deck = []
@@ -55,7 +53,7 @@ class Game
     puts "The ante is $#{@ante}."
     @players.each do |player|
       player.money_to_call = @ante
-      if player.are_you_in?     #see notes in player are_you_in? function to abstract further 
+      if player.are_you_in?      
         player.money -= player.money_to_call
         @jackpot += player.money_to_call
         player.money_to_call = 0
